@@ -1,0 +1,33 @@
+These scripts general and print various geometry parameters for RNA.
+
+All scripts require a Phenix environment.
+All scripts can be run from anywhere.
+
+rna_precis_and_suitename.py wraps the other two scripts and generates a complete parameterization.
+  For most purposes, you should run this.
+
+rna_precis_and_suitename.py supports some commandline arguments
+elbow=False will prevent execution of elbow/readyset - this will significantly increase speed, but will leave residues not covered in geostd unparameterized
+complete_only=False will suppress output lines for any residue wihtout a complete parameterization
+
+
+Example:
+phenix.python rna_precis_and_suitename.py PATH/filename.pdb
+phenix.python SOMEPATH/rna_precis_and_suitename.py elbow=False complete_only=True ANOTHERPATH/filename.pdb
+
+--------------------------------------------------------------------------------
+Other scripts:
+Other scripts are found in the rna_scripts module folder
+
+rna_suite_parameters.py runs ready_set on a a file to generate .cif restraint files
+  The option to skip elbow is currently only available when running it via the rna_precis_and_suitename.py wrapper
+  Then it uses the mmtbx.mp_geo rna_backbone=True machinery to generate RNA backbone torsions
+  These are formatted for use with suitename
+
+rna_precis_parameters.py calculates our new minimal-atom RNA parameters.
+  It currently seems to have some problems with generating complete results.  I'm working on that.
+
+
+readyset_temp is temporary holding for ready_set results, created in your current working dir. It should be deleted at the end of each run.
+rna_suite_parameters.py will create and delete this dir as necessary.
+Passing cleanup_after_readyset=False will preserve this dir for debugging purposes.
