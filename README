@@ -31,3 +31,7 @@ rna_precis_parameters.py calculates our new minimal-atom RNA parameters.
 readyset_temp is temporary holding for ready_set results, created in your current working dir. It should be deleted at the end of each run.
 rna_suite_parameters.py will create and delete this dir as necessary.
 Passing cleanup_after_readyset=False will preserve this dir for debugging purposes.
+
+## License
+
+BSD-3-Clause; see [LICENSE](LICENSE).
